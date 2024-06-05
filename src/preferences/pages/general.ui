@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="PrefsGeneral" parent="AdwPreferencesPage">
+    <property name="title" >General</property>
+    <property name="icon-name">emblem-system-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" >Global settings</property>
+        <property name="description" >These settings will have effect on all MPV windows</property>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" >Border width</property>
+            <child>
+              <object class="GtkScale">
+                <property name="valign">center</property>
+                <property name="hexpand">true</property>
+                <property name="draw-value">true</property>
+                <property name="round-digits">0</property>
+                <property name="digits">0</property>
+                <property name="orientation">horizontal</property>
+                <property name="value-pos">left</property>
+                <marks>
+                  <mark value="0" position="bottom">0</mark>
+                </marks>
+                <property name="adjustment">
+                  <object class="GtkAdjustment" id="border_width">
+                    <property name="lower">-20</property>
+                    <property name="upper">20</property>
+                    <property name="page-increment">1</property>
+                    <property name="step-increment">1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" >Border color</property>
+            <property name="activatable">true</property>
+            <property name="activatable-widget">border_color</property>
+            <child>
+              <object class="GtkColorDialogButton" id="border_color">
+                <property name="valign">center</property>
+                <property name="dialog">
+                  <object class="GtkColorDialog">
+                    <property name="title" >Border color</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" >Corner radius</property>
+            <child>
+              <object class="GtkScale">
+                <property name="valign">center</property>
+                <property name="hexpand">true</property>
+                <property name="draw-value">true</property>
+                <property name="round-digits">0</property>
+                <property name="digits">0</property>
+                <property name="orientation">horizontal</property>
+                <property name="value-pos">left</property>
+                <marks>
+                  <mark value="12" position="bottom">12</mark>
+                </marks>
+                <property name="adjustment">
+                  <object class="GtkAdjustment" id="corner_radius">
+                    <property name="lower">0</property>
+                    <property name="upper">40</property>
+                    <property name="page-increment">1</property>
+                    <property name="step-increment">1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" >Corner smoothing</property>
+            <child>
+              <object class="GtkScale">
+                <property name="valign">center</property>
+                <property name="hexpand">true</property>
+                <property name="draw-value">true</property>
+                <property name="round-digits">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="value-pos">left</property>
+                <marks>
+                  <mark value="0" position="bottom">0</mark>
+                </marks>
+                <property name="adjustment">
+                  <object class="GtkAdjustment" id="corner_smoothing">
+                    <property name="lower">0</property>
+                    <property name="upper">1</property>
+                    <property name="page-increment">0.1</property>
+                    <property name="step-increment">0.1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" >Windows shadow</property>
+            <property name="subtitle" >Customize the shadow of the rounded corner window</property>
+            <property name="activatable">true</property>
+            <child type="suffix">
+              <object class="GtkImage">
+                <property name="icon-name">go-next-symbolic</property>
+              </object>
+            </child>
+            <signal name="activated" handler="show_shadow_page" />
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="keep_for_maximized">
+            <property name="title" >Keep rounded corners for maximized windows</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="keep_for_fullscreen">
+            <property name="title" >Keep rounded corners for fullscreen windows</property>
+          </object>
+        </child>
+        <child>
+          <object class="PaddingsRow" id="paddings"/>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" >Debug</property>
+        <child>
+          <object class="AdwSwitchRow" id="enable_log">
+            <property name="title" >Enable Log</property>
+            <property name="subtitle" >Run journalctl -o cat -f /usr/bin/gnome-shell in terminal to see the log</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="header-suffix">
+          <object class="GtkButton">
+            <property name="label" >Open prefereces reset page</property>
+            <property name="halign">center</property>
+            <style>
+              <class name="pill"/>
+              <class name="destructive-action"/>
+            </style>
+            <signal name="clicked" handler="show_reset_page"/>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>

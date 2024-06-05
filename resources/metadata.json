@@ -1,0 +1,8 @@
+{
+    "name": "MPV server-side decorations",
+    "description": "Add shabow and border to MPV media player window in Wayland session",
+    "uuid": "mpv-server-side-decorations@tserhii-gh.github.com",
+    "url": "https://github.com/tserhii-gh/mpv-server-side-decorations",
+    "settings-schema": "org.gnome.shell.extensions.mpv-server-side-decorations",
+    "shell-version": ["46"]
+}
